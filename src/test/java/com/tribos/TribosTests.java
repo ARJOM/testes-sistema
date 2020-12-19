@@ -33,15 +33,15 @@ public class TribosTests {
         driver.get(this.baseUrl + "register");
         WebElement element = driver.findElement(By.name("email"));
         Thread.sleep(1000L);
-        element.sendKeys("ricart@email.com");
+        element.sendKeys("testerson@email.com");
         Thread.sleep(2000L);
 
         element = driver.findElement(By.name("user_name"));
-        element.sendKeys("Antônio Ricart");
+        element.sendKeys("Testerson");
         Thread.sleep(2000L);
 
         element = driver.findElement(By.name("birthday"));
-        element.sendKeys("14012000");
+        element.sendKeys("01012000");
         Thread.sleep(2000L);
 
         element = driver.findElement(By.name("password"));
