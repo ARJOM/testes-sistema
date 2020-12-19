@@ -62,21 +62,36 @@ public class TribosTests {
         assertEquals(textoDoAlert, "Cadastro realizado com sucesso");
     }
 
-//    @Test
-//    public void testarLogin() throws InterruptedException {
-//        driver.get(this.baseUrl + "login");
-//        WebElement element = driver.findElement(By.id("username"));
-//        Thread.sleep(1000L);
-//        element.sendKeys("user");
-//        Thread.sleep(2000L);
-//        element = driver.findElement(By.id("password"));
-//        element.sendKeys("pass");
-//        Thread.sleep(2000L);
-//        element = driver.findElement(By.tagName("form"));
-//        element.submit();
-//        Thread.sleep(2000L);
-//        assertEquals(this.baseUrl + "home", driver.getCurrentUrl());
-//    }
+    @Test
+    public void testarCadastroComVazio() throws InterruptedException {
+        driver.get(this.baseUrl + "register");
+        WebElement element = driver.findElement(By.name("email"));
+        Thread.sleep(1000L);
+        element.sendKeys("eobred@email.com");
+        Thread.sleep(2000L);
+
+        element = driver.findElement(By.name("birthday"));
+        element.sendKeys("01012000");
+        Thread.sleep(2000L);
+
+        element = driver.findElement(By.name("password"));
+        element.sendKeys("senhaforte");
+        Thread.sleep(2000L);
+
+        Select select = new Select(driver.findElement(By.name("gender")));
+        select.selectByVisibleText("Outro");
+
+        element = driver.findElement(By.tagName("form"));
+        element.submit();
+        Thread.sleep(2000L);
+
+        driver.switchTo().alert();
+        String textoDoAlert = driver.switchTo().alert().getText();
+        driver.switchTo().alert().dismiss();
+
+        assertEquals(textoDoAlert, "Preencha todos os campos!");
+    }
+
 
     @AfterClass
     public static void tearDownTest(){
