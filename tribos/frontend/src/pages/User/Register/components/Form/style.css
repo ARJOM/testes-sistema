@@ -1,0 +1,14 @@
+.cadastro{
+    width: 40vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro input{
+    height: 40px;
+}
+
+.cadastro input::placeholder{
+    font-size: larger;
+}
